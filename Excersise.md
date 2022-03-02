@@ -17,15 +17,15 @@ Assuming you are in domain team: Implement domain object and repository with tes
 - PurchaseRequest class
 - PurchaseRequest class with create method
 - Domain requirement:
-  - > 100,000 THB must be approved by Senior Management
-  - < 100,000 THB can be approved by both Senior and mid-level management
+    - > 100,000 THB must be approved by Senior Management
+    - < 100,000 THB can be approved by both Senior and mid-level management
 - Employee → Add Level method
-  - Steve is mid-level management “steve@microapplesoft.com”
-  - Mark is senior management “mark@microapplesoft.com”
-  - Others are just employee
+    - Steve is mid-level management “steve@microapplesoft.com”
+    - Mark is senior management “mark@microapplesoft.com”
+    - Others are just employee
 - Implement purchaseRequest use-case
-  - Create a purchase request domain object, using previous methods
-  - If success, save to repository
+    - Create a purchase request domain object, using previous methods
+    - If success, save to repository
 
 ## Excersise 3
 

@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.UUID;
 
 public class PurchaseRequest {
+
     private UUID id;
-    private List<PurchaseRequestItem> Items;
-    private Employee Owner;
-    private Employee Approver;
+    private List<PurchaseRequestItem> items;
+    private Employee owner;
+    private Employee approver;
 
     public PurchaseRequest(List<PurchaseRequestItem> items, Employee owner, Employee approver) {
         this.setItems(items);
@@ -16,27 +17,27 @@ public class PurchaseRequest {
     }
 
     public Employee getApprover() {
-        return Approver;
+        return approver;
     }
 
     public void setApprover(Employee approver) {
-        this.Approver = approver;
+        this.approver = approver;
     }
 
     public Employee getOwner() {
-        return Owner;
+        return owner;
     }
 
     public void setOwner(Employee owner) {
-        this.Owner = owner;
+        this.owner = owner;
     }
 
     public List<PurchaseRequestItem> getItems() {
-        return Items;
+        return items;
     }
 
     public void setItems(List<PurchaseRequestItem> items) {
-        this.Items = items;
+        this.items = items;
     }
 
     public UUID getId() {
@@ -45,5 +46,16 @@ public class PurchaseRequest {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public Boolean isValid() {
+        if (approver.level() == EmployeeLevel.Employee) {
+            return false;
+        }
+        int totalPrice = 0;
+        for (PurchaseRequestItem item : this.items) {
+            totalPrice += item.getTotalPrice();
+        }
+        return totalPrice <= 100000 || approver.level() != EmployeeLevel.MidLevelManagement;
     }
 }
